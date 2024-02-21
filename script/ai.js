@@ -21,7 +21,7 @@ module.exports.run = async function({ api, event, args }) {
 		function sendMessage(msg) {
 				api.sendMessage(msg, event.threadID, event.messageID);
 		}
-		if (!args[0]) return sendMessage('Missing prompt!');
+		if (!args[0]) return sendMessage('Please provide a question first.');
 		const prompt = args.join(" ");
 		try {
 				const response = await get(`${url}/gpt?prompt=${encodeURIComponent(prompt)}&uid=${event.senderID}`);
