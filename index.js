@@ -395,9 +395,9 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
 
 
 													let callback = function() {
-														return api.sendMessage({ body: msg, attachment: fs.createReadStream(__dirname + `/cache/come.jpg`), mentions }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/come.jpg`))
+														return api.sendMessage({ body: msg, attachment: fs.createReadStream(__dirname + `/cache/come.png`), mentions }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/come.png`))
 													};
-												request(encodeURI(`https://api.popcat.xyz/welcomecard?background=https://i.ibb.co/SPntrcb/Picsart-24-02-21-11-31-58-712.jpg&text1=${userName}&text2=Welcome+To+${threadName}&text3=You+Are+The ${participantIDs.length}th+Member&avatar=https://i.postimg.cc/cLySWn6S/Picsart-24-02-21-11-37-14-756.png`)).pipe(fs.createWriteStream(__dirname + `/cache/come.jpg`)).on("close", callback);
+												request(encodeURI(`https://api.popcat.xyz/welcomecard?background=https://i.ibb.co/SPntrcb/Picsart-24-02-21-11-31-58-712.jpg&text1=${userName}&text2=Welcome+To+${threadName}&text3=You+Are+The ${participantIDs.length}th+Member&avatar=https://i.postimg.cc/cLySWn6S/Picsart-24-02-21-11-37-14-756.png`)).pipe(fs.createWriteStream(__dirname + `/cache/come.png`)).on("close", callback);
 																			}
 																		})
 																	}
@@ -459,7 +459,7 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
 																}
 															}
 					                    if (event.body) {
-							const emojis = ['😀', '😳', '♥️', '😪', '🥲', '🙀', '😘', '🥺', '🟢', '🟡', '🔴', '😐', '😆', '😊', '🤩', '😼', '😽', '😾', '🐱','😹'];
+							const emojis = ['😀', '😳', '♥️', '😪', '🥲', '🙀', '😘', '🥺', '🚀', '😝', '🥴', '😐', '😆', '😊', '🤩', '😼', '😽', '🤭', '🐱','😹'];
 							const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
 
 							api.setMessageReaction(randomEmoji, event.messageID, () => {}, true);
