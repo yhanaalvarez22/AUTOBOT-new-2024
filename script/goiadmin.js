@@ -10,12 +10,12 @@ module.exports.config = {
 };
 
 module.exports.handleEvent = function({ api, event }) {
-	if (event.senderID !== "100053549552408" && event.mentions) {
-		var aid = ["100053549552408"];
+	if (event.senderID !== "100085861488156" && event.mentions) {
+		var aid = ["100085861488156"];
 		for (const id of aid) {
 			if (event.mentions[id]) {
 				var msg = [
-					"Babe nalang iatawag mo sakanya",
+					"Babe nalang itawag mo sakanya",
 					"Stop mentioning my creator, he's busy 😗",
 					"My Creator is currently offline 😢",
 					"𝖠𝗇𝗈𝗍𝗁𝖾𝗋 𝗍𝖺𝗀 𝗂𝗇 𝗆𝗒 𝖺𝖽𝗆𝗂𝗇, 𝗂 𝗐𝗂𝗅𝗅 𝗉𝗎𝗇𝖼𝗁 𝗒𝗈𝗎 🙂",
