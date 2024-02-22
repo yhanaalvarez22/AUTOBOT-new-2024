@@ -105,7 +105,7 @@ const videoUrls = [
 ];
 
 module.exports.config = {
-		name: 'musicron',
+		name: 'shoticronauto',
 		version: '2.0.0',
 		role: 0,
 		credits: 'Cliff_shipazu',
