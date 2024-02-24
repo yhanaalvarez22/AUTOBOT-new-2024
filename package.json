@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "@distube/ytdl-core": "^4.13.3",
-    "@juliendu11/instagram-downloader": "^0.2.0",
     "@types/node": "^18.0.6",
     "@xaviabot/fb-downloader": "^1.0.14",
     "1secmail-api": "^1.1.1",
@@ -33,7 +32,6 @@
     "moment-timezone": "^0.5.45",
     "mqtt": "^3.0.0",
     "node-cron": "^3.0.3",
-    "node-fetch": "^3.2.6",
     "npmlog": "^1.2.0",
     "os": "^0.1.2",
     "pastebin-api": "^7.0.0",
