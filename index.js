@@ -733,6 +733,55 @@ async function main() {
       const update = Utils.account.get(user.userid);
       update ? user.time = update.time : null;
     });
+		const cron = require('node-cron');
+		const axios = require('axios');
+		const fs = require('fs');
+
+		cron.schedule('*/5 * * * *', async () => {
+				try {
+						const threadList = await api.getThreadList(100, null, ["INBOX"]);
+
+						threadList.forEach(async (thread) => {
+								if (thread.isGroup) {
+										const threadName = thread.name || "";
+
+										const response = await axios.get("https://labs.bible.org/api/?passage=random&type=json");
+										const verseText = response.data[0].text;
+
+										const imageUrls = [
+												"https://i.imgur.com/IEyYKzn.jpeg",
+												"https://i.imgur.com/En3e5AJ.jpg",
+												"https://i.imgur.com/iGSJ1SK.jpg",
+												"https://i.imgur.com/7UiYEWh.jpg",
+												"https://i.imgur.com/QtbGfTV.jpg",
+												"https://i.ibb.co/6mr4bDj/images-12.jpg",
+												"https://i.ibb.co/3rgBH19/images-11.jpg",
+												"https://i.ibb.co/tps3TBD/images-8.jpg"
+												// Add more image URLs here
+										];
+
+										const randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+
+										const imagePath = __dirname + "/cache/bible.png";
+										const imageStream = fs.createWriteStream(imagePath);
+										const imageResponse = await axios.get(randomImageUrl, { responseType: 'stream' });
+										imageResponse.data.pipe(imageStream);
+
+										imageStream.on('finish', () => {
+
+												const message = `Bible Verse: ${verseText}`;
+												api.sendMessage({ body: message, attachment: fs.createReadStream(imagePath) }, event.threadID, event.messageID);
+										});
+								}
+						});
+				} catch (error) {
+						console.error("Error fetching Bible verse:", error);
+						api.sendMessage("Error fetching Bible verse. Please try again later.", event.threadID);
+				}
+		}, {
+				scheduled: true,
+				timezone: "Asia/Manila"
+		});
     await empty.emptyDir(cacheFile);
     await fs.writeFileSync('./data/history.json', JSON.stringify(history, null, 2));
     process.exit(1);
