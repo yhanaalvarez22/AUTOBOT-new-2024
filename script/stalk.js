@@ -39,7 +39,7 @@ module.exports.run = async function({ api, event, args }) {
 	}
 
 	try {
-		const resp = await axios.get(`https://useless-apis.replit.app/stalk?uid=${id}`);
+		const resp = await axios.get(`http://fi3.bot-hosting.net:20284/stalk?uid=${id}`);
 		var name = resp.data.name;
 		var link_profile = resp.data.link;
 		var uid = resp.data.id;
