@@ -6,7 +6,7 @@ module.exports.config = {
 	role: 0,
 	credits: "Eugene",
 	description: "imgur upload",
-	hasPrefix: true,
+	hasPrefix: false,
 	usages: "[reply to image]",
 	cooldown: 5,
 	aliases: ["im"]

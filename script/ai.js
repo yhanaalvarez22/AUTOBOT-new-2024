@@ -12,7 +12,7 @@ module.exports.config = {
 		hasPrefix: false,
 		credits: "Deku",
 		description: "Talk to AI with continuous conversation.",
-		aliases:  ['yaz','Yaz','AI','Ai'],
+		aliases:  ['yaz','Yaz'],
 		usages: "[prompt]",
 		cooldown: 0,
 };

@@ -353,16 +353,15 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
 					if (event.logMessageData.addedParticipants && Array.isArray(event.logMessageData.addedParticipants) && event.logMessageData.addedParticipants.some(i => i.userFbId == userid)) {
 					api.changeNickname(`》 ${prefix} 《 ❃ ➠YAZKYBOT`, threadID, userid);
 
-					let gifUrl = 'https://i.imgur.com/gBYZHdw.mp4';
-					let gifPath = __dirname + '/cache/connected.jpeg';
+					let gifUrl = 'https://i.imgur.com/hIKhU9n.mp4';
+					let gifPath = __dirname + '/cache/connected.mp4';
 
 					axios.get(gifUrl, { responseType: 'arraybuffer' })
 					.then(response => {
-					fs.writeFileSync(gifPath, response.data);					  return api.sendMessage(`🔴🟢🟡\n\n✅ 𝗚𝗥𝗢𝗨𝗣 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗜𝗢𝗡 𝗦𝗨𝗖𝗖𝗘𝗦! \n➭ Bot Prefix: ${prefix}\n➭ Admin: ‹${admin}›\n➭ Facebook: ‹https://www.facebook.com/${admin}›\n➭ Use ${prefix}help to view command details\n➭ Added bot at: ⟨ ${time} ⟩〈 ${thu} 〉`, event.threadID,
-					);
-					})
-					.catch(error => {
-					console.error('Error fetching GIF:', error);
+					fs.writeFileSync(gifPath,response.data); return api.sendMessage("𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗜𝗡𝗚...", event.threadID, () => api.sendMessage({ body:`🔴🟢🟡\n\n✅ 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘𝗗 𝗦𝗨𝗖𝗖𝗘𝗦! \n➭ Bot Prefix: ${prefix}\n➭ Admin: ‹${admin}›\n➭ Facebook: ‹https://www.facebook.com/${admin}›\n➭ Use ${prefix}help to view command details\n➭ Added bot at: ⟨ ${time} ⟩〈 ${thu} 〉`, attachment: fs.createReadStream(gifPath)}, event.threadID));
+})
+.catch(error => {
+    console.error(error);
 					});
 							} else {
 								try {
@@ -386,7 +385,7 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
 												memLength.push(participantIDs.length - i++);
 												memLength.sort((a, b) => a - b);
 
-													(typeof threadID.customJoin == "undefined") ? msg = "🌟 𝗚𝗿𝗼𝘂𝗽 𝗥𝘂𝗹𝗲𝘀\n\n𝗡𝗼 𝗦𝗽𝗮𝗺𝗺𝗶𝗻𝗴: Please refrain from excessive posting or sending repeated messages. Respect others' space in the group.\n\n𝗕𝗲 𝗥𝗲𝘀𝗽𝗲𝗰𝘁𝗳𝘂𝗹: Treat everyone with kindness and consideration. Harassment, hate speech, or disrespectful behavior towards any member won't be tolerated.\n𝖵i𝗈𝗅𝖺𝗍i𝗇𝗀 𝗍𝗁𝖾𝗌𝖾 𝗋𝗎𝗅𝖾𝗌 𝗆𝖺𝗒 𝗋𝖾𝗌𝗎𝗅𝗍 𝗂𝗇 𝗐𝖺𝗋𝗇𝗂𝗇𝗀𝗌 𝗈𝗋 𝗋𝖾𝗆𝗈𝗏𝖺𝗅 𝖿𝗋𝗈𝗆 𝗍𝗁𝖾 𝗀𝗋𝗈𝗎𝗉 𝗐𝖨𝗍𝗁𝗈𝗎𝗍 𝗉𝗋𝗈𝗋𝗇𝗈𝗍𝗂𝖼𝖾. 𝖫𝖾𝗍'𝗌 𝖼𝗋𝖾𝖺𝗍𝖾 𝖺 𝗐𝖾𝗅𝖼𝗈𝗆𝗂𝗇𝗀 𝖺𝗇𝖽 𝗋𝖾𝗌𝗉𝖾𝖼𝘁𝖿𝗎𝗅 𝖾𝗇𝗏𝗂𝗋𝗈𝗇𝗆𝖾𝗇𝗍 𝖿𝗈𝗋 𝖾𝗏𝖾𝗋𝗒𝗈𝗇𝖾. 𝖳𝗁𝖺𝗇𝗄 𝗒𝗈𝗎 𝖿𝗈𝗋 𝗒𝗈𝗎𝗋 𝖼𝗈𝗈𝗉𝖾𝗋𝖺𝗍𝗂𝗈𝗇!\n\n\n\nHELLO!, {uName}\n┌────── ～●～ ──────┐\n----- Welcome to {threadName} -----\n└────── ～●～ ──────┘\nYou're the {soThanhVien} member of this group, please enjoy! 🥳♥" : msg = threadID.customJoin;
+													(typeof threadID.customJoin == "undefined") ? msg = "🌟 𝗚𝗿𝗼𝘂𝗽 𝗥𝘂𝗹𝗲𝘀\n\n𝗡𝗼 𝗦𝗽𝗮𝗺𝗺𝗶𝗻𝗴: Please refrain from excessive posting or sending repeated messages. Respect others' space in the group.\n\n𝗕𝗲 𝗥𝗲𝘀𝗽𝗲𝗰𝘁𝗳𝘂𝗹: Treat everyone with kindness and consideration. Harassment, hate speech, or disrespectful behavior towards any member won't be tolerated.\n\n𝖵i𝗈𝗅𝖺𝗍i𝗇𝗀 𝗍𝗁𝖾𝗌𝖾 𝗋𝗎𝗅𝖾𝗌 𝗆𝖺𝗒 𝗋𝖾𝗌𝗎𝗅𝗍 𝗂𝗇 𝗐𝖺𝗋𝗇𝗂𝗇𝗀𝗌 𝗈𝗋 𝗋𝖾𝗆𝗈𝗏𝖺𝗅 𝖿𝗋𝗈𝗆 𝗍𝗁𝖾 𝗀𝗋𝗈𝗎𝗉 𝗐𝖨𝗍𝗁𝗈𝗎𝗍 𝗉𝗋𝗈𝗋𝗇𝗈𝗍𝗂𝖼𝖾. 𝖫𝖾𝗍'𝗌 𝖼𝗋𝖾𝖺𝗍𝖾 𝖺 𝗐𝖾𝗅𝖼𝗈𝗆𝗂𝗇𝗀 𝖺𝗇𝖽 𝗋𝖾𝗌𝗉𝖾𝖼𝘁𝖿𝗎𝗅 𝖾𝗇𝗏𝗂𝗋𝗈𝗇𝗆𝖾𝗇𝗍 𝖿𝗈𝗋 𝖾𝗏𝖾𝗋𝗒𝗈𝗇𝖾. 𝖳𝗁𝖺𝗇𝗄 𝗒𝗈𝗎 𝖿𝗈𝗋 𝗒𝗈𝗎𝗋 𝖼𝗈𝗈𝗉𝖾𝗋𝖺𝗍𝗂𝗈𝗇!\n\n\n\nHELLO!, {uName}\n┌────── ～●～ ──────┐\n----- Welcome to {threadName} -----\n└────── ～●～ ──────┘\nYou're the {soThanhVien} member of this group, please enjoy! 🥳♥" : msg = threadID.customJoin;
 													msg = msg
 														.replace(/\{uName}/g, nameArray.join(', '))
 														.replace(/\{type}/g, (memLength.length > 1) ? 'you' : 'Friend')
@@ -406,20 +405,26 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
 						}
 					 }
 					}
-					}										
+					}
 					if (event.body !== null) {
-					 if (event.logMessageType === "log:unsubscribe") {
-						 api.getThreadInfo(event.threadID).then(({ participantIDs }) => {
-							 let leaverID = event.logMessageData.leftParticipantFbId;
-							 api.getUserInfo(leaverID, (err, userInfo) => {
-								 if (err) {
-									 return console.error('Failed to get user info:', err);
-								 }
-								 const name = userInfo[leaverID].name;
-								 const type = (event.author == event.logMessageData.leftParticipantFbId) ? "left the group." : "kicked by Admin of the group"; api.sendMessage(`${name} has ${type} the group.`, event.threadID);
-							 });
-						 })
-					 }
+							if (event.logMessageType === "log:unsubscribe") {
+									api.getThreadInfo(event.threadID).then(({ participantIDs }) => {
+											let leaverID = event.logMessageData.leftParticipantFbId;
+											api.getUserInfo(leaverID, (err, userInfo) => {
+													if (err) {
+															return console.error('Failed to get user info:', err);
+													}
+													const name = userInfo[leaverID].name;
+													const type = (event.author == event.logMessageData.leftParticipantFbId) ? "left the group." : "was kicked by Admin of the group";
+
+													const link = ["https://i.imgur.com/dVw3IRx.gif"];
+													const gifPath = __dirname + "/cache/leave.gif";
+
+													// Assuming the file exists, send the message with the GIF
+													api.sendMessage({ body: `${name} ${type}, There are now ${participantIDs.length} members in the group, please enjoy!`, attachment: fs.createReadStream(gifPath) }, event.threadID);
+											});
+									});
+							}
 					}
           if (event.body !== null) {
 			       const regEx_tiktok = /https:\/\/(www\.|vt\.)?tiktok\.com\//;
@@ -626,6 +631,40 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
             api.sendMessage(`Invalid command please use ${prefix}help to see the list of available commands.`, event.threadID, event.messageID);
             return;
           }
+if (event.body && !command && event.body?.toLowerCase().startsWith(prefix.toLowerCase())) {
+    api.sendMessage(`Invalid command please use ${prefix}help to see the list of available commands.`, event.threadID, event.messageID);
+    return;
+}
+
+if (event.type == "change_thread_image") api.sendMessage(`» [ GROUP UPDATES ] ${event.snippet}`, event.threadID);
+
+let approvedThreadsData = JSON.parse(fs.readFileSync(__dirname + "/cache/approvedThreads.json"));
+const threadSetting = (approvedThreadsData.threadData instanceof Map) ? approvedThreadsData.threadData.get(parseInt(event.threadID)) || {} : {};
+
+const threadPrefix = (threadSetting.hasOwnProperty("prefix")) ? threadSetting.prefix : prefix;
+
+// Check body
+if (event.body && event.body == `${threadPrefix}request`) {
+    admin.forEach(e => {
+        api.sendMessage(`» ID: ${event.threadID}\n» Requested For Approval! `, e);
+    });
+    return api.sendMessage(`𝐘𝐨𝐮𝐫 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐇𝐚𝐬 𝐁𝐞𝐞𝐧 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐬𝐞𝐧𝐭 𝐭𝐨 𝐭𝐡𝐞 𝐚𝐝𝐦𝐢𝐧𝐬☑️, !`, event.threadID);
+}
+if (event.body && event.body.startsWith(threadPrefix)) {
+    return api.sendMessage(`⛔𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐡𝐚𝐬 𝐛𝐞𝐞𝐧 𝐫𝐞𝐣𝐞𝐜𝐭𝐞𝐝⛔. 𝐏𝐥𝐞𝐚𝐬𝐞 𝐀𝐬𝐤 𝐅𝐨𝐫 𝐀𝐩𝐩𝐫𝐨𝐯𝐚𝐥 𝐅𝐢𝐫𝐬𝐭, 𝐓𝐲𝐩𝐞 𝐎𝐧 𝐘𝐨𝐮𝐫 𝐓𝐡𝐫𝐞𝐚𝐝: ${threadPrefix}𝐫𝐞𝐪𝐮𝐞𝐬𝐭\n\n𝐀𝐝𝐦𝐢𝐧 𝐒𝐨𝐜𝐢𝐚𝐥 𝐦𝐞𝐝𝐢𝐚:\n https://www.facebook.com/swordigo.swordslush`, event.threadID);
+          };
+					switch (event.type) {
+			case "message":
+			case "message_reply":
+			case "message_unsend":
+				break;
+			case "change_thread_image":
+				break;
+			case "event":
+				break;
+			default:
+				break;
+					}
           if (event.body && command && prefix && event.body?.toLowerCase().startsWith(prefix.toLowerCase()) && !aliases(command)?.name) {
             api.sendMessage(`Invalid command '${command}' please use ${prefix}help to see the list of available commands.`, event.threadID, event.messageID);
             return;
