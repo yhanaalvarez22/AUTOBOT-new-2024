@@ -206,7 +206,7 @@ app.post('/login', async (req, res) => {
     });
   }
 });
-app.listen(heroku.app, () => {
+app.listen(herokuapp, () => {
   console.log(
 `Connected AUTOBOT`);
 });
