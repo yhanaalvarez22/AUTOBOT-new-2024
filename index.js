@@ -657,6 +657,7 @@ if (event.body && event.body.startsWith(threadPrefix)) {
 			case "message":
 			case "message_reply":
 			case "message_unsend":
+		  case "message_reaction":
 				break;
 			case "change_thread_image":
 				break;

@@ -8,7 +8,7 @@ module.exports.config = {
 		description: "Interacts with a GPT-4 API",
 		cooldown: 5,
 		hasPrefix: false,
-		aliases: ["Ai"],
+		aliases: [""],
 		usages: "",
 };
 
