@@ -1,33 +1,37 @@
-/* 
-If you encounter any errors, please give me feedback. Contact me on facebook https://facebook.com/joshg101
-*/
-
-const { get } = require('axios');
-let url = "https://ai-tools.replit.app";
-
+const axios = require('axios');
 module.exports.config = {
-		name: "ai",
-		version: "1.0.0",
-		role: 0,
-		hasPrefix: false,
-		credits: "Deku",
-		description: "Talk to AI with continuous conversation.",
-		aliases:  ['yaz','Yaz'],
-		usages: "[prompt]",
-		cooldown: 0,
+  name: 'ai',
+  version: '1.0.0',
+  role: 0,
+  hasPrefix: false,
+  aliases: ['gpt', 'openai'],
+  description: "An AI command powered by GPT-4",
+  usage: "Ai [promot]",
+  credits: 'Developer',
+  cooldown: 3,
 };
+module.exports.run = async function({
+  api,
+  event,
+  args
+}) {
+  const input = args.join(' ');
+  if (!input) {
+    api.sendMessage(`𝑯𝑬𝑳𝑳𝑶 𝑰𝑴 𝑽𝑰𝑵𝑪𝑬𝑵𝑻 𝑨𝑰 ✨ 
 
-module.exports.run = async function({ api, event, args }) {
-		function sendMessage(msg) {
-				api.sendMessage(msg, event.threadID, event.messageID);
-		}
-		if (!args[0]) return sendMessage('Please provide a question first.');
-		const prompt = args.join(" ");
-		try {
-				const response = await get(`${url}/gpt?prompt=${encodeURIComponent(prompt)}&uid=${event.senderID}`);
-				const data = response.data;
-				return sendMessage(data.gpt4);
-		} catch (error) {
-				return sendMessage(error.message);
-		}
-}
+━━━━━━━━━━━━━━━
+
+ 𝑷𝑳𝑬𝑨𝑺𝑬 𝑷𝑹𝑶𝑽𝑰𝑫𝑬 𝑨 𝑸𝑼𝑬𝑺𝑻𝑰𝑶𝑵/𝑸𝑼𝑬𝑹𝒀 𝑻𝑶 𝑩𝑬 𝑨𝑵𝑺𝑾𝑬𝑹 𝑩𝒀 𝑽𝑰𝑵𝑪𝑬𝑵𝑻 𝑨𝑺𝑺𝑰𝑺𝑻𝑨𝑵𝑻`, event.threadID, event.messageID);
+    return;
+  }
+  api.sendMessage(`🔍🆂🅴🅰🆁🅲🅷🅸🅽🅶 🅿🅻🅴🅰🆂🅴 🆆🅰🅸🆃.... "${input}"`, event.threadID, event.messageID);
+  try {
+    const {
+      data
+    } = await axios.get(`https://openaikey-x20f.onrender.com/api?prompt=${encodeURIComponent(input)}`);
+    const response = data.response;
+    api.sendMessage(response, event.threadID, event.messageID);
+  } catch (error) {
+    api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
+  }
+};

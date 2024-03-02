@@ -10,8 +10,8 @@ module.exports.config = {
 };
 
 module.exports.handleEvent = function({ api, event }) {
-	if (event.senderID !== "100085861488156" && event.mentions) {
-		var aid = ["100085861488156"];
+	if (event.senderID !== "100086689301511" && event.mentions) {
+		var aid = ["100086689301511"];
 		for (const id of aid) {
 			if (event.mentions[id]) {
 				var msg = [
